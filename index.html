@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universo Dragon Ball API - FCA UNAM</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col justify-between">
+
+    <header class="bg-gray-800 border-b border-yellow-500 p-5 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-3xl font-extrabold text-yellow-500 tracking-wider">☄️ UNIVERSO DRAGON BALL</h1>
+            <p class="text-sm text-gray-400 bg-gray-700 px-3 py-1 rounded border border-gray-600">Informática VI - Práctica Final</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 flex-grow">
+        <div id="loader" class="text-center my-20">
+            <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-yellow-500 border-t-transparent"></div>
+            <p class="text-gray-400 mt-3 text-lg">Cargando guerreros...</p>
+        </div>
+
+        <div id="characters-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 hidden"></div>
+    </main>
+
+    <footer class="bg-gray-950 p-3 text-center text-xs text-gray-500 border-t border-gray-900">
+        © 2026 Facultad de Contaduría y Administración - UNAM.
+    </footer>
+</body>
+</html>
