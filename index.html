@@ -27,5 +27,44 @@
     <footer class="bg-gray-950 p-3 text-center text-xs text-gray-500 border-t border-gray-900">
         © 2026 Facultad de Contaduría y Administración - UNAM.
     </footer>
+    
+    <script>
+        const grid = document.getElementById('characters-grid');
+        const loader = document.getElementById('loader');
+
+        async function cargarPersonajes() {
+            const url = `https://dragonball-api.com/api/characters?page=1&limit=10`;
+            try {
+                const respuesta = await fetch(url);
+                const datos = await respuesta.json();
+                mostrarPersonajes(datos.items);
+            } catch (error) {
+                console.error("Error al recuperar los datos:", error);
+            } finally {
+                loader.classList.add('hidden');
+            }
+        }
+
+        function mostrarPersonajes(personajes) {
+            grid.innerHTML = '';
+            personajes.forEach(personaje => {
+                const card = document.createElement('div');
+                card.className = "bg-gray-800 border border-gray-700 rounded-lg overflow-hidden shadow-lg flex flex-col justify-between p-4";
+                card.innerHTML = `
+                    <div class="flex justify-center items-center h-64 overflow-hidden mb-4">
+                        <img src="${personaje.image}" alt="${personaje.name}" class="h-full object-contain">
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-extrabold text-yellow-400 mb-1">${personaje.name}</h3>
+                        <p class="text-xs text-gray-400 mb-3"><span class="text-yellow-600">KI Base:</span> ${personaje.ki}</p>
+                        <p class="text-gray-300 text-xs text-justify line-clamp-4">${personaje.description || 'Sin descripción.'}</p>
+                    </div>`;
+                grid.appendChild(card);
+            });
+            grid.classList.remove('hidden');
+        }
+
+        cargarPersonajes();
+    </script>
 </body>
 </html>
